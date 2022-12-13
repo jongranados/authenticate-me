@@ -3,7 +3,6 @@ const { Validator } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
-
     username: {
       type: DataTypes.STRING, 
       allowNull: false, 
@@ -16,7 +15,6 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-
     email: {
       type: DataTypes.STRING, 
       allowNull: false, 
@@ -24,7 +22,6 @@ module.exports = (sequelize, DataTypes) => {
         len: [3, 256]
       }
     },
-
     hashedPassword: { 
       type: DataTypes.STRING.BINARY, 
       allowNull: false, 
@@ -32,8 +29,24 @@ module.exports = (sequelize, DataTypes) => {
         len: [60, 60]
       }
     }
-
-  }, {});
+  }, 
+  {
+    defaultScope: { 
+      attributes: { 
+        exclude: ['hashedPassword', 'email', 'createdAt', 'updatedAt']
+      }
+    }, 
+    scopes: { 
+      currentUser: { 
+        attributes: {
+          exclude: ['hashedPassword']
+        }
+      }, 
+      loginUser: { 
+        attributes: {}
+      }
+    }
+  });
   User.associate = function(models) {
     // associations can be defined here
   };
