@@ -29,7 +29,7 @@ router.post(
             user
         });
     })
-); 
+);
 
 // user logout API route
 router.delete(
