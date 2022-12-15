@@ -1,13 +1,19 @@
 const express = require('express');
 const router = express.Router(); 
-const asyncHandler = require('express-async-handler');
-const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth.js');
-const { User } = require('../../db/models');
+const sessionRouter = require('./session.js');
+const usersRouter = require('./users.js'); 
+
+router.use('/session', sessionRouter); 
+router.use('/users', usersRouter); 
 
 router.post('/test', (req, res) => { 
     res.json( { requestBody: req.body }); 
 }); 
 
+// Test user auth middlewares: 
+const { User } = require('../../db/models');
+const asyncHandler = require('express-async-handler');
+const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth.js');
 // GET /api/set-token-cookie
 router.get('/set-token-cookie', asyncHandler(async (_req, res) => {
     const user = await User.findOne({
