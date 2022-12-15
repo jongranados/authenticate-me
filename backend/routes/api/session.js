@@ -10,7 +10,7 @@ const { User } = require('../../db/models');
 const { check } = require('express-validator'); 
 const { handleValidationErrors } = require('../../utils/validation.js'); 
 
-// reqeust body validation middleware
+// request body validation middleware for the login route
 const validateLogin = [ 
     check('credential')
         .exists({ checkFalsy: true })
