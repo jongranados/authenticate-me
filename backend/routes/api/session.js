@@ -40,7 +40,21 @@ router.delete(
     }
 ); 
 
-
+// get session user API route
+router.get(
+    '/', 
+    restoreUser, 
+    (req, res) => { 
+        const { user } = req; // restoreUser appends session user to req object under 'user' key
+        if (user) { 
+            return res.json({ 
+                user: user.toSafeObject()
+            }); 
+        } else { 
+            return res.json({}); 
+        }
+    }
+);
 
 
 module.exports = router; 
