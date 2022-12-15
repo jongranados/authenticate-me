@@ -4,7 +4,7 @@ const { validationResult } = require('express-validator');
 
 // middlwareware for formatting errors from express-validator middleware
 const handleValidationErrors = (req, _res, next) => { 
-    const validationErrors = validationResul(req); 
+    const validationErrors = validationResult(req); 
 
     if (!validationErrors.isEmpty()) { 
         const errors = validationErrors
@@ -20,4 +20,6 @@ const handleValidationErrors = (req, _res, next) => {
     next(); 
 };
 
-module.exports = handleValidationErrors; 
+module.exports = {
+    handleValidationErrors
+}; 
