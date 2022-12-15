@@ -29,9 +29,16 @@ router.post(
             user
         });
     })
-)
+); 
 
-
+// user logout API route
+router.delete(
+    '/', 
+    (_req, res) => { 
+        res.clearCookie('token'); 
+        return res.json({ message: 'success' }); 
+    }
+); 
 
 
 
