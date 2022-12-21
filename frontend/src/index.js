@@ -9,11 +9,14 @@ import store from '../src/store';
 
 import { restoreCSRF, csrfFetch } from './store/csrf'; 
 
+import * as sessionActions from '../src/store/sessionSlice'; 
+
 if (process.env.NODE_ENV !== 'production') { 
   restoreCSRF(); 
 
   window.csrfFetch = csrfFetch; 
   window.store = store; 
+  window.sessionActions = sessionActions; 
 }
 
 function Root() { 
