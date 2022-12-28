@@ -16,7 +16,7 @@ export const login = createAsyncThunk(
                 credential, 
                 password,
             }),
-        }
+        };
 
         const response = await csrfFetch(url, options); 
         const data = await response.json(); 
@@ -32,12 +32,33 @@ export const restoreUser = createAsyncThunk(
         const url = '/api/session'; 
         const options = { 
             method: 'GET', 
-        }
+        };
+
+        const response = await csrfFetch(url, options); 
+        const data = await response.json(); 
+        if (data.user) thunkAPI.dispatch(setUser(data.user)); 
+        return data; 
+    },
+)
+
+export const signup = createAsyncThunk(
+    'session/signup', 
+    async (newUser, thunkAPI) => { 
+        const { username, email, password } = newUser; 
+        const url = '/api/users'; 
+        const options = { 
+            method: 'POST', 
+            body: JSON.stringify({ 
+                username, 
+                email,
+                password,
+            }),
+        };
 
         const response = await csrfFetch(url, options); 
         const data = await response.json(); 
         thunkAPI.dispatch(setUser(data.user)); 
-        return data; 
+        return data;
     },
 )
 
