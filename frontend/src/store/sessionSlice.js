@@ -20,9 +20,25 @@ export const login = createAsyncThunk(
 
         const response = await csrfFetch(url, options); 
         const data = await response.json(); 
+        console.log(data.user)
         thunkAPI.dispatch(setUser(data.user)); 
         return data; 
     }, 
+)
+
+export const restoreUser = createAsyncThunk(
+    'session/restore', 
+    async (_, thunkAPI) => {
+        const url = '/api/session'; 
+        const options = { 
+            method: 'GET', 
+        }
+
+        const response = await csrfFetch(url, options); 
+        const data = await response.json(); 
+        thunkAPI.dispatch(setUser(data.user)); 
+        return data; 
+    },
 )
 
 const sessionSlice = createSlice({ 
