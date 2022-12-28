@@ -62,6 +62,21 @@ export const signup = createAsyncThunk(
     },
 )
 
+export const logout = createAsyncThunk(
+    'session/logout', 
+    async (_, thunkAPI) => { 
+        const url = '/api/session'; 
+        const options = { 
+            method: 'DELETE', 
+        }
+
+        const response = await csrfFetch(url, options); 
+        const data = await response.json(); 
+        thunkAPI.dispatch(removeUser()); 
+        return data; 
+    }, 
+)
+
 const sessionSlice = createSlice({ 
     name: 'session', 
     initialState, 
