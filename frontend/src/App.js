@@ -3,8 +3,8 @@ import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "./store/sessionSlice";
-import { SignupFormPage } from "./components/SignupFormPage";
-import { Navigation } from "./components/Navigation";
+import SignupFormPage from "./components/SignupFormPage";
+import Navigation from "./components/Navigation";
 
 function App() {
   // check to see if session user already exists
@@ -20,12 +20,10 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path="/login">
-            {/* <h1>Login Page</h1> */}
+          {/* <Route path="/login">
             <LoginFormPage />
-          </Route>
+          </Route> */}
           <Route path="/signup">
-            {/* <h1>Sign Up Page</h1> */}
             <SignupFormPage />
           </Route>
         </Switch>
