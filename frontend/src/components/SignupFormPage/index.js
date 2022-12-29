@@ -81,7 +81,7 @@ export const SignupFormPage = () => {
           </label>
         </div>
       </div>
-      <button type="submit">Signup</button>
+      <button type="submit">Sign Up</button>
     </form>
   );
 };
