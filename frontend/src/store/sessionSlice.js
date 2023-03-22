@@ -20,7 +20,6 @@ export const login = createAsyncThunk(
 
         const response = await csrfFetch(url, options); 
         const data = await response.json(); 
-        console.log(data.user)
         thunkAPI.dispatch(setUser(data.user)); 
         return data; 
     }, 
@@ -42,7 +41,7 @@ export const restoreUser = createAsyncThunk(
 )
 
 export const signup = createAsyncThunk(
-    'session/signup', 
+    'session/signup',
     async (newUser, thunkAPI) => { 
         const { username, email, password } = newUser; 
         const url = '/api/users'; 
@@ -50,17 +49,22 @@ export const signup = createAsyncThunk(
             method: 'POST', 
             body: JSON.stringify({ 
                 username, 
-                email,
-                password,
-            }),
-        };
+                email, 
+                password, 
+            }), 
+        }; 
 
-        const response = await csrfFetch(url, options); 
-        const data = await response.json(); 
-        thunkAPI.dispatch(setUser(data.user)); 
-        return data;
-    },
-)
+        try { 
+            const response = await csrfFetch(url, options); 
+            const data = await response.json(); 
+            thunkAPI.dispatch(setUser(data.user)); 
+            return data; 
+        } catch(errorResponse) { 
+            const  errorData = await errorResponse.json(); 
+            return thunkAPI.rejectWithValue(errorData.errors)
+        }
+    }
+);
 
 export const logout = createAsyncThunk(
     'session/logout', 

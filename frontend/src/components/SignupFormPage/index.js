@@ -16,17 +16,15 @@ export default function SignupFormPage() {
 
   if (sessionUser) return <Redirect to="/" />;
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(
-        sessionActions.signup({ email, username, password })).catch(
-            async (res) => {
-                const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
-            }
-        );
+      return dispatch(sessionActions.signup({ email, username, password }))
+        .unwrap()
+        .catch(async (backendValidationErrors) => {
+          setErrors(backendValidationErrors)
+        });
     }
 
     return setErrors(['Password fields must match']); 
