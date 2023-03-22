@@ -18,10 +18,15 @@ export const login = createAsyncThunk(
             }),
         };
 
-        const response = await csrfFetch(url, options); 
-        const data = await response.json(); 
-        thunkAPI.dispatch(setUser(data.user)); 
-        return data; 
+        try { 
+            const response = await csrfFetch(url, options); 
+            const data = await response.json(); 
+            thunkAPI.dispatch(setUser(data.user)); 
+            return data; 
+        } catch(errorResponse) { 
+            const  errorData = await errorResponse.json(); 
+            return thunkAPI.rejectWithValue(errorData.errors)
+        }
     }, 
 )
 
