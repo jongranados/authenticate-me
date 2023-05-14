@@ -13,9 +13,7 @@ export default function LoginFormPage() {
     setErrors([]);
     return dispatch(sessionActions.login({ credential, password }))
       .unwrap()
-      .catch(async (backendValidationErrors) => {
-        setErrors(backendValidationErrors)
-      });
+      .catch(async (backendValidationErrors) => setErrors(backendValidationErrors));
 
   };
 
