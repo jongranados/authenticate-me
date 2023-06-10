@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import { ModalProvider } from "./context/Modal";
 
 import { Provider as ReactProvider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
@@ -23,11 +22,9 @@ if (process.env.NODE_ENV !== "production") {
 function Root() {
   return (
     <ReactProvider store={store}>
-      <ModalProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </ModalProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </ReactProvider>
   );
 }
