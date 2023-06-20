@@ -1,58 +1,71 @@
-import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
-import * as sessionActions from "../../store/sessionSlice";
+import { Redirect, Link } from "react-router-dom";
+import * as sessionActions from '../../store/sessionSlice'; 
 import "./LoginForm.css";
+
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { initialLoginValues, loginValidationSchema } from '../../validations';
 
 export default function LoginFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
-  const [credential, setCredential] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
-
   if (sessionUser) return <Redirect to="/" />;
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setErrors([]);
-    return dispatch(sessionActions.login({ credential, password })).catch(
-      async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      }
-    );
+  const handleFormSubmit = async(values, onSubmitProps) => {
+	const { 
+		credential, 
+		password
+	} = values;
+
+	return await dispatch(sessionActions.login({ credential, password }))
+		.unwrap() 
+		.catch(async backendValidationErrors => alert(backendValidationErrors)); 
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => {
-          return <li key={idx}>{error}</li>;
-        })}
-      </ul>
-      <div className="credentials">
-        <label>
-          Username or Email
-          <input
-            type="text"
-            value={credential}
-            onChange={(event) => setCredential(event.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="pasword"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            required
-          />
-        </label>
-      </div>
-      <button type="submit">Log In</button>
-    </form>
+		<Formik
+			onSubmit={handleFormSubmit}
+			initialValues={initialLoginValues}
+			validationSchema={loginValidationSchema}
+		>
+			{({
+				values,
+				errors,
+				touched,
+				handleBlur,
+				handleChange,
+				handleSubmit,
+			}) => (
+				<Form onSubmit={handleSubmit}>
+					<label htmlFor="credential">Username or email</label>
+					<Field
+						id="credential"
+						name="credential"
+						type="text"
+						onBlur={handleBlur}
+						onChange={handleChange}
+						value={values.credential}
+					/>
+					<ErrorMessage name="credential" />
+					
+					<label htmlFor="password">Password</label>
+					<Field
+						id="password"
+						name="password"
+						type="password"
+						onBlur={handleBlur}
+						onChange={handleChange}
+						value={values.password}
+					/>
+					<ErrorMessage name="password" />
+
+					<button type="submit">LOGIN</button>
+					<Link to="/signup">
+						Don't have an account? Sign up here!
+					</Link>
+				</Form>
+			)}
+		</Formik>
   );
 }
