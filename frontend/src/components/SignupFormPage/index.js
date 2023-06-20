@@ -5,6 +5,7 @@ import "./SignupForm.css";
 
 import { Field, Form, Formik } from "formik";
 import { initialSignupValues } from "../../validations";
+import { Link } from "react-router-dom";
 
 export default function SignupFormPage() {
   const dispatch = useDispatch();
@@ -57,8 +58,11 @@ export default function SignupFormPage() {
 						onBlur={handleBlur}
 						value={values.confirmPassword}
 					/>
-          
-          <button type='submit'>SIGNUP</button>
+
+					<button type="submit">SIGNUP</button>
+					<Link to="/login">
+						Already have an account? Login here!
+					</Link>
 				</Form>
 			)}
 		</Formik>
