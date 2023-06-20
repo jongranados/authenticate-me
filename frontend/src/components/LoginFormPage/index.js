@@ -3,7 +3,7 @@ import { Redirect, Link } from "react-router-dom";
 import * as sessionActions from '../../store/sessionSlice'; 
 import "./LoginForm.css";
 
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { initialLoginValues, loginValidationSchema } from '../../validations';
 
 export default function LoginFormPage() {
@@ -29,7 +29,14 @@ export default function LoginFormPage() {
 			initialValues={initialLoginValues}
 			validationSchema={loginValidationSchema}
 		>
-			{({ values, handleBlur, handleChange, handleSubmit }) => (
+			{({
+				values,
+				errors,
+				touched,
+				handleBlur,
+				handleChange,
+				handleSubmit,
+			}) => (
 				<Form onSubmit={handleSubmit}>
 					<label htmlFor="credential">Username or email</label>
 					<Field
@@ -40,7 +47,8 @@ export default function LoginFormPage() {
 						onChange={handleChange}
 						value={values.credential}
 					/>
-
+					<ErrorMessage name="credential" />
+					
 					<label htmlFor="password">Password</label>
 					<Field
 						id="password"
@@ -50,6 +58,7 @@ export default function LoginFormPage() {
 						onChange={handleChange}
 						value={values.password}
 					/>
+					<ErrorMessage name="password" />
 
 					<button type="submit">LOGIN</button>
 					<Link to="/signup">
