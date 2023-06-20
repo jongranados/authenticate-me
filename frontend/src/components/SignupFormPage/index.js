@@ -57,6 +57,8 @@ export default function SignupFormPage() {
 						onBlur={handleBlur}
 						value={values.confirmPassword}
 					/>
+          
+          <button type='submit'>SIGNUP</button>
 				</Form>
 			)}
 		</Formik>
