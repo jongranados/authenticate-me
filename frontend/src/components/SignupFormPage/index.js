@@ -54,7 +54,7 @@ export default function SignupFormPage() {
 					<Field
 						name="password"
 						id="password"
-						type="text"
+						type="password"
 						onChange={handleChange}
 						onBlur={handleBlur}
 						value={values.password}
