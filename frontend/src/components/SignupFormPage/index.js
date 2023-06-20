@@ -1,85 +1,87 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
-import * as sessionActions from "../../store/sessionSlice";
+import { Redirect, Link } from "react-router-dom";
+import * as sessionActions from '../../store/sessionSlice';
 import "./SignupForm.css";
 
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import { initialSignupValues, signupValidationSchema } from "../../validations";
 
 export default function SignupFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [errors, setErrors] = useState([]);
-
   if (sessionUser) return <Redirect to="/" />;
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleFormSubmit = async (values) => {
+    const { username, email, password, confirmPassword } = values; 
+
     if (password === confirmPassword) {
-      setErrors([]);
       return dispatch(sessionActions.signup({ email, username, password }))
         .unwrap()
         .catch(async (backendValidationErrors) => {
-          setErrors(backendValidationErrors)
+          alert(backendValidationErrors);
         });
-    }
-
-    return setErrors(['Password fields must match']); 
+	  }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => {
-          return <li key={idx}>{error}</li>;
-        })}
-      </ul>
-      <div className="credentials">
-        <div>
-          <label>
-            Username
-            <input
-              type="text"
-              value={username}
-              onChange={(event) => setUsername(event.target.value)}
-              required
-            />
-          </label>
-          <label>
-            Email
-            <input
-              type="text"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              required
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Password
-            <input
-              type="pasword"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-              required
-            />
-          </label>
-          <label>
-            Confirm Password
-            <input
-              type="pasword"
-              value={confirmPassword}
-              onChange={(event) => setConfirmPassword(event.target.value)}
-              required
-            />
-          </label>
-        </div>
-      </div>
-      <button type="submit">Sign Up</button>
-    </form>
+		<Formik
+			onSubmit={handleFormSubmit}
+			initialValues={initialSignupValues}
+			validationSchema={signupValidationSchema}
+		>
+			{({ values, handleChange, handleBlur, handleSubmit }) => (
+				<Form onSubmit={handleSubmit}>
+					<label htmlFor="username">Username</label>
+					<Field
+						name="username"
+						id="username"
+						type="text"
+						onChange={handleChange}
+						onBlur={handleBlur}
+						value={values.username}
+					/>
+					<ErrorMessage name="username" />
+
+					<label htmlFor="email">Email</label>
+					<Field
+						name="email"
+						id="email"
+						type="email"
+						onChange={handleChange}
+						onBlur={handleBlur}
+						value={values.email}
+					/>
+					<ErrorMessage name="email" />
+
+					<label htmlFor="password">Password</label>
+					<Field
+						name="password"
+						id="password"
+						type="password"
+						onChange={handleChange}
+						onBlur={handleBlur}
+						value={values.password}
+					/>
+					<ErrorMessage name="password" />
+
+					<label htmlFor="confirmPassword">Confirm password</label>
+					<Field
+						name="confirmPassword"
+						id="confirmPassword"
+						type="password"
+						onChange={handleChange}
+						onBlur={handleBlur}
+						value={values.confirmPassword}
+					/>
+					<ErrorMessage name="confirmPassword" />
+
+					<button type="submit">SIGNUP</button>
+					<Link to="/login">
+						Already have an account? Login here!
+					</Link>
+				</Form>
+			)}
+		</Formik>
   );
 };
