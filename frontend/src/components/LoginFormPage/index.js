@@ -1,11 +1,10 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
+import * as sessionActions from '../../store/sessionSlice'; 
 import "./LoginForm.css";
 
 import { Formik, Form, Field } from "formik";
 import { initialLoginValues, loginValidationSchema } from '../../validations';
-
 
 export default function LoginFormPage() {
   const dispatch = useDispatch();
@@ -13,25 +12,25 @@ export default function LoginFormPage() {
 
   if (sessionUser) return <Redirect to="/" />;
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async(values, onSubmitProps) => {
+	const { 
+		credential, 
+		password
+	} = values;
+
+	return await dispatch(sessionActions.login({ credential, password }))
+		.unwrap() 
+		.catch(async backendValidationErrors => alert(backendValidationErrors)); 
   };
 
   return (
-
 		<Formik
 			onSubmit={handleFormSubmit}
 			initialValues={initialLoginValues}
 			validationSchema={loginValidationSchema}
 		>
-			{({
-				values,
-				handleBlur,
-				handleChange,
-				handleSubmit,
-			}) => (
-				<Form
-					onSubmit={handleSubmit}
-				>
+			{({ values, handleBlur, handleChange, handleSubmit }) => (
+				<Form onSubmit={handleSubmit}>
 					<label htmlFor="credential">Username or email</label>
 					<Field
 						id="credential"
