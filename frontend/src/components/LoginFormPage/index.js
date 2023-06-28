@@ -30,7 +30,14 @@ export default function LoginFormPage() {
 				<div className="max-w-7xl mx-auto  border-solid border-8 border-purple-400">
 					<div className="flex flex-wrap   border-solid border-8 border-indigo-800">
 						<div className="hidden w-1/2 lg:block px-4 border-solid border-8 border-orange-400">
+							<div
+								style={{
+									backgroundImage: `url(${abstractPapercut})`,
+								}}
+								className="relative max-w-lg mx-auto lg:mx-0 lg:max-w-2xl h-full bg-center bg-cover rounded-3xl   border-solid border-8 border-yellow-400"
+							>
 
+							</div>
 						</div>
 
 						<div className="w-full px-4 pb-16 lg:w-1/2 lg:mb-0 border-solid border-8 border-orange-400">
