@@ -124,7 +124,7 @@ export default function LoginFormPage() {
 											<div className="mt-20 flex justify-center">
 												<button
 													type="submit"
-													className="w-full px-8 py-4 text-lg font-poppins rounded-xl text-white bg-[#FF5F01] hover:bg-blue-800"
+													className="w-full px-8 py-4 text-lg font-poppins rounded-xl text-white bg-[#FF5F01] hover:bg-orange-600"
 												>
 													LOGIN
 												</button>
