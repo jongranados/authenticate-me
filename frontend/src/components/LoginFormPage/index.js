@@ -36,7 +36,16 @@ export default function LoginFormPage() {
 								}}
 								className="relative max-w-lg mx-auto lg:mx-0 lg:max-w-2xl h-full bg-center bg-cover rounded-3xl   border-solid border-8 border-yellow-400"
 							>
-
+								<div className="flex flex-col items-center w-full absolute bottom-1/4 text-white   border-solid border-4 border-white">
+									<h1 className="w-3/4 text-6xl text-[#E8E9DB] font-bayon [text-shadow:_0_5px_0_rgb(122_33_1_/_40%)]">
+										Authenticate Me
+									</h1>
+									<p className="w-3/4 text-lg leading-tight text-[#E8E9DB] font-poppins font-light    border-solid border-4 border-red-500">
+										A simple full-stack application
+										demonstrating a common authentication
+										pattern.
+									</p>
+								</div>
 							</div>
 						</div>
 
@@ -62,15 +71,15 @@ export default function LoginFormPage() {
 										handleSubmit,
 									}) => (
 										<Form onSubmit={handleSubmit}>
-											<div className="my-6">
+											<div className="my-8">
 												<label
 													htmlFor="credential"
-													className="block mb-1.5 text-sm font-light text-gray-900"
+													className="block mb-1.5 text-normal font-light text-gray-900"
 												>
 													Username or email
 												</label>
 												<Field
-													className="w-full px-4 py-3 text-sm font-light text-gray-900 border border-gray-200 rounded-lg focus:shadow-lg focus:border-[#FF5F01] focus:outline-none"
+													className="w-full px-4 py-3 text-normal font-light text-gray-900 border border-gray-200 rounded-lg focus:shadow-lg focus:border-[#FF5F01] focus:outline-none"
 													id="credential"
 													name="credential"
 													type="text"
@@ -82,20 +91,20 @@ export default function LoginFormPage() {
 													<ErrorMessage
 														name="credential"
 														component="div"
-														className="pt-1 text-xs font-extralight text-red-600"
+														className="pt-1 text-sm font-extralight text-red-600"
 													/>
 												</div>
 											</div>
 
-											<div className="my-6">
+											<div className="my-8">
 												<label
 													htmlFor="password"
-													className="block mb-1.5 text-sm font-light text-gray-900"
+													className="block mb-1.5 text-normal font-light text-gray-900"
 												>
 													Password
 												</label>
 												<Field
-													className="w-full px-4 py-3 text-sm font-light text-gray-900 border border-gray-200 rounded-lg focus:shadow-lg focus:border-[#FF5F01] focus:outline-none"
+													className="w-full px-4 py-3 text-normal font-light text-gray-900 border border-gray-200 rounded-lg focus:shadow-lg focus:border-[#FF5F01] focus:outline-none"
 													id="password"
 													name="password"
 													type="password"
@@ -107,21 +116,21 @@ export default function LoginFormPage() {
 													<ErrorMessage
 														name="password"
 														component="div"
-														className="pt-1 text-xs font-extralight text-red-600"
+														className="pt-1 text-sm font-extralight text-red-600"
 													/>
 												</div>
 											</div>
 
-											<div className="my-8 flex justify-center">
+											<div className="mt-20 flex justify-center">
 												<button
 													type="submit"
-													className="w-full px-8 py-4 text-sm rounded-xl font-semibold text-white bg-[#FF5F01] hover:bg-orange-600"
+													className="w-full px-8 py-4 text-lg font-poppins rounded-xl text-white bg-[#FF5F01] hover:bg-blue-800"
 												>
 													LOGIN
 												</button>
 											</div>
 
-											<div className="mt-20 text-gray-900 font-light text-sm text-center">
+											<div className="mt-20 text-gray-900 font-light text-normal text-center">
 												Don't have an account?
 												<Link
 													to="/signup"
