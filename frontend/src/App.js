@@ -16,19 +16,19 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
-      <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
-        <Switch>
-          <Route path="/login">
-            <LoginFormPage />
-          </Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
-        </Switch>
-      )}
-    </>
+		<div className="h-screen flex flex-col justify-center border-solid border-8 border-indigo-800">
+			<Navigation isLoaded={isLoaded} />
+			{isLoaded && (
+				<Switch>
+					<Route path="/login">
+						<LoginFormPage />
+					</Route>
+					<Route path="/signup">
+						<SignupFormPage />
+					</Route>
+				</Switch>
+			)}
+		</div>
   );
 }
 

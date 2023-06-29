@@ -26,7 +26,7 @@ export default function SignupFormPage() {
   };
 
   return (
-		<section className="relative py-20 h-full overflow-hidden   border-solid border-8 border-red-600">
+		<section className="relative py-20 overflow-hidden   border-solid border-8 border-red-600">
 			<div className="container px-4 mx-auto  border-solid border-8 border-green-200">
 				<div className="max-w-7xl mx-auto  border-solid border-8 border-purple-400">
 					<div className="flex flex-wrap   border-solid border-8 border-indigo-800">
