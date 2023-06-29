@@ -37,7 +37,7 @@ export default function SignupFormPage() {
 								}}
 								className="relative max-w-lg mx-auto lg:mx-0 lg:max-w-2xl h-full bg-center bg-cover rounded-3xl   border-solid border-8 border-yellow-400"
 							>
-								<div className="flex flex-col items-center w-full absolute bottom-1/4 text-white   border-solid border-4 border-white">
+								<div className="flex flex-col items-center w-full absolute bottom-1/3 text-white   border-solid border-4 border-white">
 									<h1 className="w-3/4 text-6xl text-[#E8E9DB] font-bayon [text-shadow:_0_5px_0_rgb(122_33_1_/_40%)]">
 										Authenticate Me
 									</h1>
