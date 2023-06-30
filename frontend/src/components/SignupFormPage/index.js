@@ -26,22 +26,22 @@ export default function SignupFormPage() {
   };
 
   return (
-		<section className="relative py-20 overflow-hidden   border-solid border-8 border-red-600">
-			<div className="container px-4 mx-auto  border-solid border-8 border-green-200">
-				<div className="max-w-7xl mx-auto  border-solid border-8 border-purple-400">
-					<div className="flex flex-wrap   border-solid border-8 border-indigo-800">
-						<div className="hidden w-1/2 lg:block px-4 border-solid border-8 border-orange-400">
+		<section className="relative py-20 overflow-hidden">
+			<div className="container px-4 mx-auto">
+				<div className="max-w-7xl mx-auto">
+					<div className="flex flex-wrap">
+						<div className="hidden w-1/2 lg:block px-4">
 							<div
 								style={{
 									backgroundImage: `url(${abstractPapercut})`,
 								}}
-								className="relative max-w-lg mx-auto lg:mx-0 lg:max-w-2xl h-full bg-center bg-cover rounded-3xl   border-solid border-8 border-yellow-400"
+								className="relative max-w-lg mx-auto lg:mx-0 lg:max-w-2xl h-full bg-center bg-cover rounded-3xl"
 							>
-								<div className="flex flex-col items-center w-full absolute bottom-1/3 text-white   border-solid border-4 border-white">
+								<div className="flex flex-col items-center w-full absolute bottom-1/3 text-white">
 									<h1 className="w-3/4 text-6xl text-[#E8E9DB] font-bayon [text-shadow:_0_5px_0_rgb(122_33_1_/_40%)]">
 										Authenticate Me
 									</h1>
-									<p className="w-3/4 text-lg leading-tight text-[#E8E9DB] font-poppins font-light    border-solid border-4 border-red-500">
+									<p className="w-3/4 text-lg leading-tight text-[#E8E9DB] font-poppins font-light">
 										A simple full-stack application
 										demonstrating a common authentication
 										pattern.
@@ -50,7 +50,7 @@ export default function SignupFormPage() {
 							</div>
 						</div>
 
-						<div className="w-full px-4 pb-16 lg:w-1/2 lg:mb-0 border-solid border-8 border-orange-400">
+						<div className="w-full px-4 pb-16 lg:w-1/2 lg:mb-0">
 							<div className="max-w-lg mx-auto lg:pt-24 lg:pb-4">
 								<h3 className="mb-2 text-5xl text-gray-900 font-bold">
 									Welcome!
