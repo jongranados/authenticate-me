@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "./store/sessionSlice";
@@ -16,19 +16,18 @@ function App() {
   }, [dispatch]);
 
   return (
-		<div className="min-h-screen flex flex-col justify-center">
-			<Navigation isLoaded={isLoaded} />
-			{isLoaded && (
-				<Switch>
-					<Route path="/login">
-						<LoginFormPage />
-					</Route>
-					<Route path="/signup">
-						<SignupFormPage />
-					</Route>
-				</Switch>
-			)}
-		</div>
+		isLoaded && (
+			<div className="min-h-screen flex flex-col justify-center">
+				<Routes>
+					<Route
+						path="/"
+						element={<Navigation isLoaded={isLoaded} />}
+					/>
+					<Route path="/login" element={<LoginFormPage />} />
+					<Route path="/signup" element={<SignupFormPage />} />
+				</Routes>
+			</div>
+		)
   );
 }
 

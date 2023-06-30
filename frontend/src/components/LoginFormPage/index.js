@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import * as sessionActions from '../../store/sessionSlice'; 
 import abstractPapercut from './abstractPapercut.jpg'
 
@@ -12,7 +12,7 @@ export default function LoginFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Navigate to="/" />;
 
   const handleFormSubmit = async(values, onSubmitProps) => {
 	const { 
