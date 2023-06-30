@@ -79,7 +79,7 @@ export default function LoginFormPage() {
 													Username or email
 												</label>
 												<Field
-													className="w-full px-4 py-3 text-normal font-light text-gray-900 border border-gray-200 rounded-lg focus:shadow-lg focus:border-[#FF5F01] focus:outline-none"
+													className="w-full px-4 py-3 text-normal font-light text-gray-900 border border-gray-400 rounded-lg focus:shadow-lg focus:border-[#FF5F01] focus:outline-none"
 													id="credential"
 													name="credential"
 													type="text"
@@ -104,7 +104,7 @@ export default function LoginFormPage() {
 													Password
 												</label>
 												<Field
-													className="w-full px-4 py-3 text-normal font-light text-gray-900 border border-gray-200 rounded-lg focus:shadow-lg focus:border-[#FF5F01] focus:outline-none"
+													className="w-full px-4 py-3 text-normal font-light text-gray-900 border border-gray-400 rounded-lg focus:shadow-lg focus:border-[#FF5F01] focus:outline-none"
 													id="password"
 													name="password"
 													type="password"

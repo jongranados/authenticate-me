@@ -80,7 +80,7 @@ export default function SignupFormPage() {
 													Username
 												</label>
 												<Field
-													className="w-full px-4 py-3 text-normal font-light text-gray-900 border border-gray-200 rounded-lg focus:shadow-lg focus:border-[#FF5F01] focus:outline-none"
+													className="w-full px-4 py-3 text-normal font-light text-gray-900 border border-gray-400 rounded-lg focus:shadow-lg focus:border-[#FF5F01] focus:outline-none"
 													name="username"
 													id="username"
 													type="text"
@@ -105,7 +105,7 @@ export default function SignupFormPage() {
 													Email
 												</label>
 												<Field
-													className="w-full px-4 py-3 text-normal font-light text-gray-900 border border-gray-200 rounded-lg focus:shadow-lg focus:border-[#FF5F01] focus:outline-none"
+													className="w-full px-4 py-3 text-normal font-light text-gray-900 border border-gray-400 rounded-lg focus:shadow-lg focus:border-[#FF5F01] focus:outline-none"
 													name="email"
 													id="email"
 													type="email"
@@ -130,7 +130,7 @@ export default function SignupFormPage() {
 													Password
 												</label>
 												<Field
-													className="w-full px-4 py-3 text-normal font-light text-gray-900 border border-gray-200 rounded-lg focus:shadow-lg focus:border-[#FF5F01] focus:outline-none"
+													className="w-full px-4 py-3 text-normal font-light text-gray-900 border border-gray-400 rounded-lg focus:shadow-lg focus:border-[#FF5F01] focus:outline-none"
 													id="password"
 													name="password"
 													type="password"
@@ -155,7 +155,7 @@ export default function SignupFormPage() {
 													Confirm password
 												</label>
 												<Field
-													className="w-full px-4 py-3 text-normal font-light text-gray-900 border border-gray-200 rounded-lg focus:shadow-lg focus:border-[#FF5F01] focus:outline-none"
+													className="w-full px-4 py-3 text-normal font-light text-gray-900 border border-gray-400 rounded-lg focus:shadow-lg focus:border-[#FF5F01] focus:outline-none"
 													name="confirmPassword"
 													id="confirmPassword"
 													type="password"
