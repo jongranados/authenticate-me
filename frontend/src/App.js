@@ -16,7 +16,7 @@ function App() {
   }, [dispatch]);
 
   return (
-		<div className="min-h-screen flex flex-col justify-center border-solid border-8 border-indigo-800">
+		<div className="min-h-screen flex flex-col justify-center">
 			<Navigation isLoaded={isLoaded} />
 			{isLoaded && (
 				<Switch>
