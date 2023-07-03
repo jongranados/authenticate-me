@@ -1,6 +1,6 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, Navigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import * as sessionActions from '../../store/sessionSlice';
 import "./SignupForm.css";
 import abstractPapercut from "../LoginFormPage/abstractPapercut.jpg";
@@ -10,8 +10,6 @@ import { initialSignupValues, signupValidationSchema } from "../../validations";
 
 export default function SignupFormPage() {
   const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
-  if (sessionUser) return <Navigate to="/" />;
 
   const handleFormSubmit = async (values) => {
     const { username, email, password, confirmPassword } = values; 
