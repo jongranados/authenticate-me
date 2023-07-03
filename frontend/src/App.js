@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "./store/sessionSlice";
 import SignupFormPage from "./components/SignupFormPage";
 import Navigation from "./components/Navigation";
@@ -14,6 +14,8 @@ function App() {
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
+
+  const sessionUser = useSelector((state) => state.session.user)
 
   return (
 		isLoaded && (
