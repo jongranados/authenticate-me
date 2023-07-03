@@ -22,9 +22,10 @@ function App() {
 					<Route
 						path="/"
 						element={<Navigation isLoaded={isLoaded} />}
-					/>
-					<Route path="/login" element={<LoginFormPage />} />
-					<Route path="/signup" element={<SignupFormPage />} />
+					>
+						<Route path="/login" element={<LoginFormPage />} />
+						<Route path="/signup" element={<SignupFormPage />} />
+					</Route>
 				</Routes>
 			</div>
 		)

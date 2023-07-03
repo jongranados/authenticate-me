@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
@@ -20,13 +20,16 @@ export default function Navigation({ isLoaded }) {
   }
 
   return (
-    <ul>
-      <li className="navigation-wrapper">
-        <NavLink exact to="/">
-          Home
-        </NavLink>
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
+		<>
+			<ul>
+				<li className="navigation-wrapper">
+					<NavLink exact to="/">
+						Home
+					</NavLink>
+					{isLoaded && sessionLinks}
+				</li>
+			</ul>
+      <Outlet/>
+		</>
   );
 };
