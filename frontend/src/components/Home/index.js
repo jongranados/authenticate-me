@@ -1,5 +1,5 @@
-export default function Home({ user }) { 
+export default function Home({ sessionUser }) { 
     return (
-        <p>{`${user.username}, you're in!`}</p>
+        <p>{`${sessionUser.username}, you're in!`}</p>
     )
 }
