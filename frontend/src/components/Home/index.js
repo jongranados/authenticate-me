@@ -1,5 +1,7 @@
 export default function Home({ sessionUser }) { 
     return (
-        <p>{`${sessionUser.username}, you're in!`}</p>
-    )
+		<div className="flex-1 flex flex-col justify-center items-center border-8">
+			<p className="font-bayon text-center  border-4 text-6xl">You're in! 🎉</p>
+		</div>
+	);
 }
