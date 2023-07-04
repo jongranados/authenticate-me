@@ -1,6 +1,5 @@
 import React from "react";
 import ProfileButton from "./ProfileButton";
-import "./Navigation.css";
 
 export default function Navigation({sessionUser}) {
 

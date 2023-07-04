@@ -2,7 +2,6 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import * as sessionActions from '../../store/sessionSlice';
-import "./SignupForm.css";
 import abstractPapercut from "../LoginFormPage/abstractPapercut.jpg";
 
 import { ErrorMessage, Field, Form, Formik } from "formik";

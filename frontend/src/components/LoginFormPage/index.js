@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import * as sessionActions from '../../store/sessionSlice'; 
 import abstractPapercut from './abstractPapercut.jpg'
 
-import "./LoginForm.css";
-
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { initialLoginValues, loginValidationSchema } from '../../validations';
 
