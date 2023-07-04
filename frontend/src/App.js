@@ -30,7 +30,7 @@ function App() {
 						path="/"
 						element={
 							sessionUser ? (
-								<Home sessionUser={sessionUser} />
+								<Home />
 							) : (
 								<Navigate to="/login" />
 							)
