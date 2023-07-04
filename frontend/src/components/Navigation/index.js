@@ -8,7 +8,7 @@ export default function Navigation({sessionUser}) {
 
   return sessionUser ? (
 		<>
-			<ul>
+			<ul className="flex flex-row justify-end">
 				<li>{sessionLinks}</li>
 			</ul>
 		</>
