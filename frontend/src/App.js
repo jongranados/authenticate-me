@@ -1,35 +1,64 @@
 import React, { useState, useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "./store/sessionSlice";
 import SignupFormPage from "./components/SignupFormPage";
-import Navigation from "./components/Navigation";
+import Home from "./components/Home";
+import Layout from "./components/Layout";
 
 function App() {
-  // check to see if session user already exists
-  const dispatch = useDispatch();
-  const [isLoaded, setIsLoaded] = useState(false);
+	// attempt to restore session user tied to cookie
+	const dispatch = useDispatch();
+	const [isLoaded, setIsLoaded] = useState(false);
 
-  useEffect(() => {
-    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
-  }, [dispatch]);
+	useEffect(() => {
+		dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+	}, [dispatch]);
 
-  return (
-    <>
-      <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
-        <Switch>
-          <Route path="/login">
-            <LoginFormPage />
-          </Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
-        </Switch>
-      )}
-    </>
-  );
+	const sessionUser = useSelector((state) => state.session.user);
+
+	return (
+		isLoaded && (
+			<Routes>
+				<Route
+					path="/"
+					element={<Layout sessionUser={sessionUser} />}
+				>
+					<Route
+						path="/"
+						element={
+							sessionUser ? (
+								<Home />
+							) : (
+								<Navigate to="/login" />
+							)
+						}
+					/>
+					<Route
+						path="/login"
+						element={
+							sessionUser ? (
+								<Navigate to="/" />
+							) : (
+								<LoginFormPage />
+							)
+						}
+					/>
+					<Route
+						path="/signup"
+						element={
+							sessionUser ? (
+								<Navigate to="/" />
+							) : (
+								<SignupFormPage />
+							)
+						}
+					/>
+				</Route>
+			</Routes>
+		)
+	);
 }
 
 export default App;

@@ -1,32 +1,17 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
-import "./Navigation.css";
 
-export default function Navigation({ isLoaded }) {
-  const sessionUser = useSelector((state) => state.session.user);
+export default function Navigation({sessionUser}) {
 
-  let sessionLinks;
-  if (sessionUser) {
-    sessionLinks = <ProfileButton user={sessionUser} />;
-  } else {
-    sessionLinks = (
-      <div>
-        <NavLink to="/login">Login</NavLink>
-        <NavLink className="signup-link" to="/signup">Sign Up</NavLink>
-      </div>
-    );
-  }
+  let sessionLinks = <ProfileButton user={sessionUser} />;
 
-  return (
-    <ul>
-      <li className="navigation-wrapper">
-        <NavLink exact to="/">
-          Home
-        </NavLink>
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
+  return sessionUser ? (
+		<>
+			<ul className="flex flex-row justify-end">
+				<li>{sessionLinks}</li>
+			</ul>
+		</>
+  ) : (
+		<></>
   );
 };
