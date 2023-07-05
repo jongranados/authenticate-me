@@ -4,7 +4,6 @@ import LoginFormPage from "./components/LoginFormPage";
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "./store/sessionSlice";
 import SignupFormPage from "./components/SignupFormPage";
-import Navigation from "./components/Navigation";
 import Home from "./components/Home";
 import Layout from "./components/Layout";
 
