@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit'; 
-import logger from 'redux-logger'; 
 import sessionSlice from './sessionSlice';
 
 const store = configureStore({ 
@@ -7,9 +6,12 @@ const store = configureStore({
         session: sessionSlice,
     }, 
     middleware: (getDefaultMiddleware) => {
-        return process.env.NODE_ENV === 'production'
-            ? getDefaultMiddleware()
-            : getDefaultMiddleware().concat(logger)
+        if (process.env.NODE_ENV === 'production') {
+            return getDefaultMiddleware(); 
+        } else { 
+            const logger = require('redux-logger'); 
+            return getDefaultMiddleware().concat(logger);
+        }
     }, 
 }); 
 
