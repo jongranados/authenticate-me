@@ -1,9 +1,15 @@
 'use strict';
 const bcrypt = require('bcryptjs'); 
 
+let options = {};
+if (process.env.NODE_ENV === "production") {
+	options.schema = process.env.SCHEMA;
+  options.tableName = "Users";
+}
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Users', [
+    return queryInterface.bulkInsert(options, [
 
       { 
         email: 'demo@user.io', 
@@ -28,7 +34,7 @@ module.exports = {
 
   down: (queryInterface, Sequelize) => {
     const Op = Sequelize.Op; 
-    return queryInterface.bulkDelete('Users', {
+    return queryInterface.bulkDelete(options, {
       username: { [Op.in]: ['Demo-lition', 'FakeUser1', 'FakeUser2'] }
     }, {})
   }

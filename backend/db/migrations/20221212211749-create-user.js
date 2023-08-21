@@ -1,7 +1,14 @@
 'use strict';
+
+let options = {};
+if (process.env.NODE_ENV === "production") {
+	options.schema = process.env.SCHEMA;
+  options.tableName = 'Users'
+}
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Users', {
+    return queryInterface.createTable(options, {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -32,9 +39,9 @@ module.exports = {
         type: Sequelize.DATE, 
         defaultValue: Sequelize.fn('NOW')
       }
-    });
+    }, {});
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Users');
+    return queryInterface.dropTable(options);
   }
 };
